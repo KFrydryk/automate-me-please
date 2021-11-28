@@ -13,9 +13,9 @@ describe('AppComponent', () => {
     component.inputNumber = '19321212346';
     component.onSubmit();
     expect(component.isValid).toBe(true);
-    expect(component.day).toBe(1);
-    expect(component.year).toBe(2020);
-    expect(component.month).toBe(2);
+    expect(component.day).toBe(12);
+    expect(component.year).toBe(2019);
+    expect(component.month).toBe(12);
   });
 
   it('should handle submit correctly with invalid PESEL', () => {
