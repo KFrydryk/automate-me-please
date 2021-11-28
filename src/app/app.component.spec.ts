@@ -81,7 +81,7 @@ describe('AppComponent', () => {
 
   it('should identify birth in XIXth century correctly', () => {
       const pesel19Century: Array<number> = [1, 9, 9, 2, 1, 2, 1, 2, 3, 4, 5];
-      expect(component.getYear(pesel19Century)).toEqual(1919);
+      expect(component.getYear(pesel19Century)).toEqual(1819);
   });
 
   it('should identify birth in XXth century correctly', () => {
