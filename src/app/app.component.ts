@@ -24,7 +24,7 @@ import {
           [
             style({ opacity: 0 }),
             animate('1s 0.35s ease-out',
-                    style({ opacity: 1 }))
+              style({ opacity: 1 }))
           ]
         ),
         transition(
@@ -32,7 +32,7 @@ import {
           [
             style({ opacity: 1 }),
             animate('0.3s ease-in',
-                    style({ opacity: 0 }))
+              style({ opacity: 0 }))
           ]
         )
       ]
@@ -53,7 +53,7 @@ export class AppComponent {
 
 
   onSubmit() {
-    this.isInitiated=true;
+    this.isInitiated = true;
     const pesel = this.inputNumber;
     this.isValid = this.isValidPesel(pesel);
     if (this.isValid) {
@@ -65,7 +65,7 @@ export class AppComponent {
   isValidPesel(pesel) {
     if (typeof pesel !== 'string') {
       return false;
-    } else if ( pesel.length !== 11) {
+    } else if (pesel.length !== 11) {
       return false;
     } else {
       const peselArray = new Array();
@@ -74,10 +74,10 @@ export class AppComponent {
       }
       this.peselArray = peselArray;
       return this.verifyControlNumber(peselArray) &&
-              this.verifyDate(this.getYear(peselArray),
-                              this.getMonth(peselArray),
-                              this.getDay(peselArray)
-                            );
+        this.verifyDate(this.getYear(peselArray),
+          this.getMonth(peselArray),
+          this.getDay(peselArray)
+        );
     }
   }
 
@@ -85,7 +85,7 @@ export class AppComponent {
     const weight = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
     let sum = 0;
     const controlNumber = pesel[10];
-    for (let i = 0 ; i < weight.length ; i++) {
+    for (let i = 0; i < weight.length; i++) {
       sum += (pesel[i] * weight[i]);
     }
     sum = sum % 10;
@@ -94,15 +94,15 @@ export class AppComponent {
 
   getDate(pesel: Array<number>) {
     this.year = this.getYear(pesel);
-      this.month = this.getMonth(pesel);
+    this.month = this.getMonth(pesel);
     this.day = this.getDay(pesel);
   }
 
   verifyDate(y: number, m: number, d: number) {
     const dt = new Date(y, m - 1, d);
     return dt.getDate() === d &&
-          dt.getMonth() === m - 1 &&
-          dt.getFullYear() === y;
+      dt.getMonth() === m - 1 &&
+      dt.getFullYear() === y;
   }
 
   getMonth(pesel: Array<number>) {
@@ -114,12 +114,12 @@ export class AppComponent {
   }
 
   getYear(pesel: Array<number>) {
-    let year = 1900+pesel[0] * 10 + pesel[1];
+    let year = 1900 + pesel[0] * 10 + pesel[1];
 
-    if ( pesel[2] >= 8 ) {
+    if (pesel[2] >= 8) {
       // Dates in the XIX century
       year -= 100;
-    } else if ( pesel[2] >= 2 ) {
+    } else if (pesel[2] >= 2) {
       // Dates in the XXI, XXII and XXIII  century
       year += Math.floor(pesel[2] / 2) * 100;
     }
