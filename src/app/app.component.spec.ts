@@ -22,7 +22,7 @@ describe('AppComponent', () => {
     component.inputNumber = '19321212345';
     component.onSubmit();
     expect(component.day).toBe(undefined);
-    expect(component.isValid).toBe(true);
+    expect(component.isValid).toBe(false);
   });
 
   it('should accept valid PESEL numbers', () => {
